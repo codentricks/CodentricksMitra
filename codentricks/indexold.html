@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Codentricks Plasma Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/awesome/css/all.css" />
+    <link href="assets/style.css" rel="stylesheet">
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script  src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script  src="core/app.js"></script>
+
+
+</head>
+<body>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-4 col-lg-2 d-md-block bg-light sidebar collapse" >
+      <div class="position-sticky pt-3">
+        <div class="nav flex-column nav-pills me-3" id="v-tabs" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active" id="tab1-tab" data-bs-toggle="pill" data-bs-target="#dashboard" type="button" role="tab" aria-controls="tab1" aria-selected="true"><i class="fas fa-tachometer-alt"></i> &nbsp;Dashboard</button>
+
+          <button class="nav-link" id="tab4-tab" data-bs-toggle="pill" data-bs-target="#sensor" type="button" role="tab" aria-controls="tab1" aria-selected="true"><i class="fas fa-kiss-wink-heart"></i> &nbsp;&nbsp;Sensor</button>
+
+          <button class="nav-link" id="tab2-tab" data-bs-toggle="pill" data-bs-target="#tools" type="button" role="tab" aria-controls="tab2" aria-selected="false"><i class="fas fa-brain"></i> &nbsp;Tools</button>
+          <button class="nav-link" id="tab3-tab" data-bs-toggle="pill" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false"><i class="fa fa-cogs"></i> &nbsp;About</button>
+
+        </div>
+
+        <div class="launcher align-items-center justify-content-center" style="margin-left:5px;"><br/>
+           <span onclick="launch(this)" id="firefox" class="app zoom-container"><!-- <i class="fab fa-firefox fa-2x"></i>--> <img src="img/apps/firefox.png" width="32px"/> </span>
+           <span onclick="launch(this)" id="konsole" class="app zoom-container"><img src="img/apps/konsole.png" width="32px"/>  <!--<i class="fas fa-terminal fa-2x"></i>--> </span>
+           <span onclick="launch(this)" id="kate" class="app zoom-container"><img src="img/apps/kate.png" width="32px"/> <!--<i class="far fa-clipboard fa-2x"></i>--> </span>
+           <span onclick="launch(this)" id="/usr/bin/google-chrome-stable" class="app zoom-container"><img src="img/apps/chrome.png" width="32px"/> <!-- <i class="fab fa-chrome fa-2x"></i>--> </span>
+           <span onclick="launch(this)" id="kcalc" class="app zoom-container"><img src="img/apps/calculator.png" width="32px"/> <!--<i class="fas fa-calculator fa-2x"></i>--></span>
+           <span onclick="launch(this)" id="code" class="app zoom-container"><img src="img/apps/code.png" width="32px"/> <!--<i class="fas fa-code fa-2x"></i>--></span>
+
+        </div>
+
+
+        <div class="glassBoxS" style="margin-top:10px;padding-bottom:10px;">
+           <h5 class="text-center text-uppercase">
+            Root Directory
+           </h5>
+           <div id="storage" class="text-center">
+              <span id="homeDirSizeU"></span> <span id="storage1u" class="hideElement">GiB free of </span>
+              <span id="homeDirSize"></span> <span id="storage2u" class="hideElement">GiB</span>
+           </div>
+
+
+          <div id="progress-bar" class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="margin-bottom:10px">
+            <div id="progress-barIn" class="progress-bar bg-warning" style="width: 75%"></div>
+          </div>
+          <div id="usbDrive"></div>
+          <div id="sdb"></div>
+          <div id="sdc"></div>
+          <div id="sdd"></div>
+
+        </div>
+
+        <div class="glassBoxS" style="margin-top:10px;padding-bottom:10px;">
+            <input type="hidden" id="kdeS" />
+            <h5 class="text-center  text-uppercase">KDE CONNECT  &nbsp;
+            <span id="kStatus" class="kdeStatus"></span>
+            <span id="conD" class="kdeCount"></span>
+            </h5>
+            <input type="hidden" id="devID"/>
+            <div id="device1"></div>
+            <div id="device2"></div>
+            <div id="device3"></div>
+
+            <input type="hidden" id="blueId"/>
+            <input type="hidden" id="gpuV"/>
+            <input type="hidden" id="cpuVendor"/>
+            <input type="hidden" id="systemT"/>
+            <span id="bModel"></span><span id="bPercentage"></span>
+        </div>
+
+
+
+
+
+
+      </div>
+    </nav>
+
+    <main class="col-md-8 ms-sm-auto col-lg-10 px-md-4">
+
+      <div class="tab-content" id="v-tabs-content">
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="tab1-tab">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="glassBox">
+                   <h5 class="d-flex align-items-center justify-content-center text-uppercase">Uptime</h5>
+                   <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                    <h3 class="mb-0 fw-bold"><span id="upTime"></span></h3>
+                   </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <div class="glassBox">
+                   <h5 class="d-flex align-items-center justify-content-center text-uppercase" >CPU TEMP.</h5>
+                   <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                    <h3 class="mb-0 fw-bold"><span id="cpuTemp"></span></h3>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="glassBox">
+                   <h5 class="d-flex align-items-center justify-content-center text-uppercase" >GPU</h5>
+                   <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                    <h3 class="smallh12 mb-0 fw-bold align-items-center justify-content-center"><span id="gpuD"></span>
+                    <br/><span id="nvidiaV"></span> <span id="nvidiaT"></span></h3>
+                </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+
+               <div class="col-md-4">
+                 <div class="glassBox">
+                   <h5 class="d-flex align-items-center justify-content-center text-uppercase" >CPU USAGES</h5>
+                   <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                    <h3 class="mb-0 fw-bold"><span id="cpuUsages"></span></h3>
+                    </div>
+
+                   <h3 class="smallh3 d-flex align-items-center justify-content-center">Core: &nbsp;<span id="core"></span> &nbsp; Thread: &nbsp;<span id="thread"></span></h3>
+                </div>
+              </div>
+
+
+                <div class="col-md-4">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" >MEMORY</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="memoryUsages"></span></h3><br/>
+                    </div>
+                    <h3 class="smallh3 d-flex align-items-center justify-content-center"><span id="usedM"></span> <span id="totalM"></span></h3>
+                  </div>
+                </div>
+
+                 <div class="col-md-4">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" >SWAP</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="swapUsages"></span></h3><br/>
+                    </div>
+                    <h3 class="smallh3 d-flex align-items-center justify-content-center"><span id="usedS"></span> <span id="totalS"></span></h3>
+                  </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center text-uppercase" >OS Details <span id="arch"></span></h5>
+
+                    <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="osDetect"></span></h3>
+                    <h3 class="smallh14 d-flex align-items-center">
+                    <span id="userUID"></span> &nbsp;&nbsp;
+                    <span id="user"></span>&nbsp;&nbsp;
+                    <span id="userShell"></span>
+                   </h3>
+                    <h3 class="smallh14 d-flex align-items-center">
+                       <span id="de"></span>&nbsp;
+                       <span id="graphic_platform"></span>&nbsp;&nbsp;
+
+                    </h3>
+
+                    <h3 class="smallh14 d-flex align-items-center">
+                       <span id="homeDir"></span>
+                       <!--<span id="homeDirSizeU"></span>&nbsp;
+                       <span id="homeDirSize"></span>-->
+                    </h3>
+
+                    <h3 class="smallh14 d-flex "><br/><span id="boottime"></span></h3>
+                  </div>
+
+                  <div class="glassBox">
+                    <h5 class="smallh14 d-flex align-items-center text-uppercase" >Codentricks &nbsp;&nbsp;<small>The Smart Coding Solution</small></h5>
+
+                    <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="inr"></span></h3>
+
+
+
+                  </div>
+
+
+
+
+
+              </div>
+              <div class="col-md-6">
+
+                 <div class="glassBox">
+                   <h5 class="d-flex align-items-center text-uppercase" >Hardware</h5>
+
+                   <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="cpuName"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center">
+                     <span id="l1cache"></span>&nbsp;&nbsp;
+                     <span id="l2cache"></span>&nbsp;&nbsp;
+                     <span id="l3cache"></span>
+                   </h3>
+                   <h3 class="smallh14 d-flex align-items-center"><span id="manfact"></span>&nbsp;&nbsp;<span id="product"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center"><span id="screen"></span>&nbsp;&nbsp;<span id="refresh"></span>&nbsp;&nbsp;<span id="mmodel"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center"><span id="virta"></span></h3>
+                </div>
+
+                 <div class="glassBox">
+                   <h5 class="d-flex align-items-center text-uppercase" >Network Details</h5>
+                   <input type="hidden" id="activeIn">
+                   <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="activeI"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="ssid"></span>&nbsp;&nbsp; <span id="linkQuality"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"><span id="downloaded"></span>&nbsp;&nbsp; <span id="uploaded"></span></h3>
+                   <h3 class="smallh14 d-flex align-items-center" style="margin-top:10px;"></h3>
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Sensor -->
+         <div class="tab-pane fade" id="sensor" role="tabpanel" aria-labelledby="tab3-tab">
+          <div class="row">
+                <div class="col-md-4">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" >CPU TEMP.</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="cpuSTemp"></span></h3>
+                  </div>
+                  </div>
+                 </div>
+
+                 <div class="col-md-4" id="gpuTM">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" >GPU TEMP.</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="gpuSTemp"></span></h3>
+                  </div>
+                  </div>
+                 </div>
+
+                 <div class="col-md-4" id="nvmeD">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" id="ssd">NVME TEMP.</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="ssdSTemp"></span></h3>
+                  </div>
+                  </div>
+                 </div>
+
+                 <div class="col-md-4">
+                  <div class="glassBox">
+                    <h5 class="d-flex align-items-center justify-content-center text-uppercase" id="hdd">SSD TEMP.</h5>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <h3 class="mb-0 fw-bold"><span id="hddSTemp"></span></h3>
+                  </div>
+                  </div>
+                 </div>
+          </div>
+          <div class="row">
+
+              <div class="col-md-4" id="systemC">
+                 <div class="glassBox">
+                   <h5 class="d-flex align-items-center justify-content-center text-uppercase" >LAPTOP BATTERY</h5>
+                   <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                    <h3 class="mb-0 fw-bold"><span id="lbp"></span></h3>
+                    </div>
+
+                   <h3 class="smallh3 d-flex align-items-center justify-content-center"> &nbsp;<span id="lcs"></span> &nbsp; &nbsp;<span id="lcc"></span></h3>
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+<!--     Automation tools         -->
+        <div class="tab-pane fade" id="tools" role="tabpanel" aria-labelledby="tab2-tab">
+
+          <div class="row">
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a  id="cTrash" onclick="cleanTrash()"><i class="fas fa-trash fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Trash
+                              </h5>
+                              <h3 class="m-0">
+                              <span id="trash"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanTemp()" id="cTemp"><i class="fas fa-trash fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              TEMP
+                              </h5>
+                              <h3 class="m-0">
+                              <span id="temp"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanJCache()" id="jfire" title="Clear (Vacuum Time 2 Days)"><i class="fa fa-history fa-2x" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Journalctl
+                              </h5>
+                              <h3 class="m-0">
+                                <span id="jCache"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanfCache()" id="cfire"><i class="fab fa-firefox fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Firefox Cache
+                              </h5>
+                              <h3 class="m-0">
+                                <span id="fCache"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanfdCache()" id="cDfire"><i class="fab fa-firefox fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Firefox Developer
+                              </h5>
+                              <h3 class="m-0">
+                                <span id="fdCache"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanChromeCache()" id="chromefire"><i class="fab fa-chrome fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Chrome Cache
+                              </h5>
+                              <h3 class="m-0">
+                                <span id="chromeCache"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a onclick="cleanEdgeCache()" id="edgefire"><i class="fab fa-edge fa-2x"></i></a>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                              Microsoft Edge
+                              <h3 class="m-0">
+                                <span id="edgeCache"></span>
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+
+
+              <div class="col-md-4">
+                  <div class="bg-transparent-light rounded-1 mb-3 position-relative">
+                          <div class="p-3 text-white">
+                            <div class="mb-2">
+                              <a  id="xamppS"><i class="fas fa-cloud fa-2x"></i></a>
+                              <span id="xAction"></span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <h5 class="m-0 fw-normal">
+                                <span id="xStatus">Not running </span>
+                              </h5>
+                              <h3 class="m-0">
+                                   XAMPP
+                              </h3>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+
+
+
+
+
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+
+                <div class="col-md-12">
+                  <div class="glassBox">
+                    <h4>CODENTRICKS</h4>
+                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
+                      <p>Description : Lampp Backup & Restore, sending SMS, Send File and Sync Battery Info using
+                          KDE Connect, System, Network Info, Wi-Fi Signal strength ...
+                          <br/>
+                          Developer: Sanjay Prasad<br/>
+                          Website: https://www.codentricks.com
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+
+
+        </div>
+      </div>
+
+
+<!-- SMS -->
+<div class="modal fade" id="sendSMS" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-comment-alt" title="SMS"></i></span> SEND SMS <span id="deviceS"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 form-control">
+           <input type="hidden" id="smsDevideID">
+           <input type="text" id="mobile_no" placeholder="mobile no" value="91" class="form-control" required>
+        </div>
+        <div class="col-md-12 form-control">
+           <textarea id="smsContent" class="form-control" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="sendSMS()">SEND</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- File Send -->
+<div class="modal fade" id="sendDevice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-comment-alt" title="SMS"></i></span> Send File <span id="deviceSF"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 form-control">
+           <input type="hidden" id="sendDevideID">
+           <input type="file" id="sfile" class="form-control"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="sendFile()">SEND</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </main>
+  </div>
+</div>
+<script  src="core/kdeconnect.js"></script>
+<script  src="core/auto.js"></script>
+
+
+</body>
+</html>

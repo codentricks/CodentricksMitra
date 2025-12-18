@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="codemitra.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.71179153"
+     inkscape:cx="396.88587"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient13"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#05da27;stop-opacity:1;"
+         offset="0"
+         id="stop13" />
+      <stop
+         style="stop-color:#903927;stop-opacity:0;"
+         offset="1"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient9"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#e6cac0;stop-opacity:0.905882;"
+         offset="0.68716031"
+         id="stop10" />
+      <stop
+         style="stop-color:#f962c0;stop-opacity:0;"
+         offset="0.96019024"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2"
+       inkscape:swatch="gradient">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.90588199;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9"
+       id="linearGradient11"
+       x1="73.699267"
+       y1="92.786811"
+       x2="126.19942"
+       y2="92.786811"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13"
+       id="linearGradient14"
+       x1="61.884917"
+       y1="93.300369"
+       x2="142.55814"
+       y2="93.300369"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#4d4d4d;fill-opacity:0.905882;stroke-width:4.1;stroke:url(#linearGradient14);stroke-opacity:1;stroke-dasharray:none"
+       id="path1"
+       cx="102.22153"
+       cy="93.300369"
+       inkscape:export-filename="icon.png"
+       inkscape:export-xdpi="44.174213"
+       inkscape:export-ydpi="44.174213"
+       rx="38.28661"
+       ry="36.05632" />
+    <ellipse
+       style="fill:#000000;stroke-width:2.02063;fill-opacity:0.6803686"
+       id="path1-8"
+       cx="103.31083"
+       cy="92.802177"
+       inkscape:export-filename="icon.png"
+       inkscape:export-xdpi="20.377237"
+       inkscape:export-ydpi="20.377237"
+       rx="38.28661"
+       ry="36.05632" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:74.6977px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Bold';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:0.905882;stroke-width:14.905"
+       x="72.644661"
+       y="119.00784"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#ffffff;fill-opacity:0.905882;stroke-width:14.905"
+         x="72.644661"
+         y="119.00784">C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:35.9108px;font-family:Carlito;-inkscape-font-specification:'Carlito Bold';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:0.996078;stroke-width:7.16558"
+       x="93.082787"
+       y="102.5927"
+       id="text18"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Roboto Condensed';-inkscape-font-specification:'Roboto Condensed,  Bold Condensed';fill:#ffffff;fill-opacity:0.996078;stroke-width:7.16558"
+         x="93.082787"
+         y="102.5927">m</tspan></text>
+  </g>
+</svg>
