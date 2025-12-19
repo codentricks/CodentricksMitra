@@ -56,8 +56,8 @@ function createWindow() {
       ],
     },
   ]);
-  Menu.setApplicationMenu(menu);
-  //Menu.setApplicationMenu(null);
+  //Menu.setApplicationMenu(menu);
+  Menu.setApplicationMenu(null);
 
   // Create the browser window.
   mainWindow = new BrowserWindow({

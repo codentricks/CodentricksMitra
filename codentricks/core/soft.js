@@ -73,7 +73,8 @@ function appStatus(apps){
     //console.log(app)
     app.forEach(function(line){
         let appID=line+"C";
-        checkApp(line, appID);
+        //checkApp(line, appID);
+        checkNativeApp(line, appID)
     });
 }
 appStatus(apps);
@@ -148,9 +149,6 @@ function thirstPartyApps(){
     });
 }
 thirstPartyApps();
-
-
-
 
 function installApp(element){
       const { exec } = require('child_process');
@@ -471,6 +469,81 @@ function flatpakUninstall(event){
         
             //console.log(stdout);
             
+        });
+    }
+
+}
+
+// native
+function checkNativeApp(appName, appID){
+    const { exec } = require('child_process');
+
+    let packageManager=document.getElementById("packageManager").value;
+    if(appName=="sublime-text") appName="subl";
+    if(appName=="python3-pip") appName="pip3";
+    let cmd="command -v "+appName;
+    //console.log(appID);
+    exec(cmd,(err, stdout, stderr)=>{
+
+        //console.log(stdout);
+        if(err){
+            //console.log(err);
+            document.getElementById(appID).innerHTML='<i class="fa fa-times-circle text-red"></i>&nbsp; Not Installed';
+        }else{
+            stdout=stdout.trim();
+            //console.log(appID);
+
+            document.getElementById(appID).innerHTML='<span nativeID="'+appName+'" onclick="nativeLaunch(event)" class="curSor"><i class="fa fa-play text-green"></i>&nbsp; Launch</span>&nbsp;&nbsp;&nbsp;<span nativeuid="'+appName+'" onclick="nativeUninstall(event)" class="curSor"><i class="fa fa-trash text-danger"></i> &nbsp; Uninstall</span>';
+
+
+        }
+    });
+
+}
+
+function nativeLaunch(event){
+    const { exec } = require('child_process');
+    let appName = event.target.closest('span[nativeid]');
+    //console.log(nativeid);
+    if (appName) {
+        let nativeid = appName.getAttribute('nativeid');
+        let cmd=nativeid;
+        exec(cmd,(err, stdout, stderr)=>{
+
+            //console.log(stdout);
+
+        });
+    }
+
+}
+
+function nativeUninstall(event){
+    const { exec } = require('child_process');
+    let appName = event.target.closest('span[nativeuid]');
+    //console.log("hello");
+    if (appName) {
+        let app = appName.getAttribute('nativeuid');
+        let packageM=document.getElementById("packageManager").value;
+
+        let cmd="";
+        if(packageM=="dnf"){
+            cmd='konsole  -e sudo dnf remove '+app;
+        }
+        if(packageM=="apt"){
+            cmd='konsole  -e sudo apt remove '+app;
+        }
+        if(packageM=="pacman"){
+            cmd='konsole -e sudo pacman -R '+app;
+        }
+        if(packageM=="zypper"){
+            cmd='konsole -e sudo zypper remove '+app;
+        }
+
+        //console.log(cmd);
+        exec(cmd,(err, stdout, stderr)=>{
+
+            //console.log(stdout);
+
         });
     }
 
