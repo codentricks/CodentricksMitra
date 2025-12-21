@@ -7,6 +7,6 @@ sudo pacman -S --noconfirm kdeconnect
 sudo modprobe platform:drivetemp
 echo drivetemp | sudo tee -a /etc/modules
 echo drivetemp | sudo tee -a /etc/modules-load.d/drivetemp.conf
-cd ./Codentricks/
+cd ./codentricks/
 npm install
 sh ./install.sh

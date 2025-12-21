@@ -4,9 +4,10 @@ sudo apt install -y lm-sensors
 sudo apt install -y kate
 sudo apt install -y konsole
 sudo apt install -y kdeconnect
+sudo apt install -y qdbus-qt5
 sudo modprobe platform:drivetemp
 echo drivetemp | sudo tee -a /etc/modules
 echo drivetemp | sudo tee -a /etc/modules-load.d/drivetemp.conf
-cd ./Codentricks/
+cd ./codentricks/
 npm install
 sh ./install.sh
