@@ -8,6 +8,7 @@ For Debian based distro like
 Ubuntu, Linux Mint, Zorin OS ...
 Run command
 chmod 755 install_debian.sh
+--------------------------------
 sudo ./install_debian.sh
 
 For Fedora based distro like
@@ -15,20 +16,23 @@ For Fedora based distro like
 Fedora, Nobara ...
 Run command
 chmod 755 install_fedora.sh
+-------------------------------
 sudo ./install_fedora.sh
 
 For Opensuse based distro
 ==================================
-Fedora, Nobara ...
+openSUSE Leap, openSUSE Tumbleweed,GeckoLinux  ...
 Run command
 chmod 755 install_opensuse.sh
+--------------------------------
 sudo ./install_opensuse.sh
 
-For Arcch based distro
+For Arch based distro
 ==================================
 Garuda, CachyOs, Manjaro, ShaniOS ...
 Run command
 chmod 755 install_arch.sh
+-------------------------------
 sudo ./install_arch.sh
 
 For Flatpak support, follow url given below
