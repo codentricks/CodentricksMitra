@@ -11,3 +11,5 @@ echo drivetemp | sudo tee -a /etc/modules-load.d/drivetemp.conf
 cd ./codentricks/
 npm install
 sh ./install.sh
+sudo chown root:root ./node_modules/electron/dist/chrome-sandbox
+sudo chmod 4755 ./node_modules/electron/dist/chrome-sandbox
